@@ -26,3 +26,4 @@ optional arguments:
 - -t TARGET, --target TARGET :  The target relative address to jump to (required for jump fault model, otherwise ignored)
 - -v [0-255], --value [0-255] : The value to set the byte to (required for tamper fault model only, otherwise ignored)
 - -w [1-8], --wordsize [1-8] : The size (in bytes) of the word (required for zerobyte fault model only, otherwise ignored)
+
