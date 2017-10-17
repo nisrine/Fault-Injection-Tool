@@ -15,14 +15,12 @@ optional arguments:
 - -a ADDRESS, --address ADDRESS : The address to implement the fault injection in the input file
 - -b [0-7], --bit [0-7] : The bit of the byte to flip (required for flip fault model, otherwise ignored)
 - -f {zerobyte,zeroword,nop,flip,tamper,jump}, --faultmodel {zerobyte,zeroword,nop,flip,tamper,jump}:
-```
-zerobyte: sets the specified  address  byte to zero.
-zeroword: sets the specified  address  word to zero.
-nop: sets the specified  address  byte to the x86 NOP code (0x90).
-flip: flips the specified  address  byte s  bit .
-tamper: changes the value of a byte to  value .
-jump: sets the specified  address  jump to jump to  target  location.
-```
+   - zerobyte: sets the specified  address  byte to zero.
+   - zeroword: sets the specified  address  word to zero.
+   - nop: sets the specified  address  byte to the x86 NOP code (0x90).
+   - flip: flips the specified  address  byte s  bit .
+   - tamper: changes the value of a byte to  value .
+   - jump: sets the specified  address  jump to jump to  target  location.
 - -i INFILE, --infile INFILE : The input file
 - -o OUTFILE, --outfile OUTFILE : The output mutant file name
 - -t TARGET, --target TARGET :  The target relative address to jump to (required for jump fault model, otherwise ignored)
