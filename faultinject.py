@@ -3,7 +3,7 @@
 """
  Fault Injection Tool
  Authors: Nisrine jafri, Thomas Given-Wilson
- Contact: nisrine.jafro@inria.fr 
+ Contact: nisrine.jafri@inria.fr 
 """
 
 # Required imports
