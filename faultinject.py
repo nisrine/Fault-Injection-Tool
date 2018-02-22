@@ -145,6 +145,18 @@ def JMPFM(values,outfile,position,target):
     store.close()
 
 
+"""
+Function ARMNOP(infile,outfile,position)
+	* Generate the mutant of the input object file by changing the target
+	* 
+	* Create the Mutant as outfile
+"""
+def ARMNOP(values,outfile,position):
+  values[int(position)]=0x00
+  values[int(position+1)]=0xBF
+  store = open(outfile, 'wb')
+  store.write(values)
+  store.close()
 
 """
   Supporting functions
@@ -203,7 +215,7 @@ def FindJumpAdress(values):
 parser = argparse.ArgumentParser(description='Fault injection tool\nUsage:\tfaultinject.py [-h] -f {zerobyte,zeroword,nop,flip,tamper,jump} -a ADDRESS [-b [0-7]] [-t TARGET] [-v [0-255]] -o OUTFILE -i INFILE', formatter_class=RawTextHelpFormatter, usage=SUPPRESS)
 parser.add_argument('-a','--address', type=int, help='the address to implement the fault injection in the input file', required=True)
 parser.add_argument('-b','--bit', type=int, choices=range(0,8) , metavar='[0-7]',  help='the bit of the byte to flip (required for flip fault model, otherwise ignored)', required=False)
-parser.add_argument('-f','--faultmodel', choices=['zerobyte','zeroword','nop','flip','tamper','jump'],  help="* zerobyte: sets the specified <address> byte to zero.\n* zeroword: sets the specified <address> word to zero.\n* nop: sets the specified <address> byte to the x86 NOP code (0x90).\n* flip: flips the specified <address> byte\'s <bit>.\n* tamper: changes the value of a byte to <value>.\n* jump: sets the specified <address> jump to jump to <target> location.", required=True)
+parser.add_argument('-f','--faultmodel', choices=['zerobyte','zeroword','nop', 'armnop','flip','tamper','jump'],  help="* zerobyte: sets the specified <address> byte to zero.\n* zeroword: sets the specified <address> word to zero.\n* nop: sets the specified <address> byte to the x86 NOP code (0x90).\n* flip: flips the specified <address> byte\'s <bit>.\n* tamper: changes the value of a byte to <value>.\n* jump: sets the specified <address> jump to jump to <target> location.", required=True)
 parser.add_argument('-i','--infile', type=str, metavar='INFILE', help='the input file', required=True)
 parser.add_argument('-o','--outfile', help='the output mutant file name', required=True)
 parser.add_argument('-t','--target', type=int, help='the target relative address to jump to (required for jump fault model, otherwise ignored)', required=False)
@@ -256,6 +268,9 @@ if __name__ == "__main__":
     elif faultmodel == 'nop':
         # check that address is valid here
         NopByteFM(binaryfile,outputfile,address)
+    elif faultmodel == 'armnop':
+        # check that address is valid here
+        ARMNOP(binaryfile,outputfile,address)
     elif faultmodel == 'flip':
         # check that address is valid here
         if bit == None:
@@ -281,4 +296,3 @@ if __name__ == "__main__":
     if (not os.path.exists(inpufile)):
       print("The inputfile "+inpufile+" not found, aborting.")
       exit(4)
-
