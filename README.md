@@ -7,7 +7,7 @@ Fault Injection Tool for Binaries. It simulates variety of the fault injection a
 
 Documentation:
 
-Usage:	faultinject.py [-h] -f {zerobyte,zeroword,nop,flip,tamper,jump} -a ADDRESS [-b [0-7]] [-t TARGET] [-v [0-255]] -o OUTFILE -i INFILE 
+Usage:	faultinject.py [-h] -f {zerobyte,zeroword,nop,armnop,flip,tamper,jump} -a ADDRESS [-b [0-7]] [-t TARGET] [-v [0-255]] -o OUTFILE -i INFILE 
 
 optional arguments: 
 
@@ -18,6 +18,7 @@ optional arguments:
    - zerobyte: sets the specified  address  byte to zero.
    - zeroword: sets the specified  address  word to zero.
    - nop: sets the specified  address  byte to the x86 NOP code (0x90).
+   - armnop: sets the specified address byte and the next byte to the ARM NOP (0x00BF)
    - flip: flips the specified  address  byte s  bit .
    - tamper: changes the value of a byte to  value .
    - jump: sets the specified  address  jump to jump to  target  location.
