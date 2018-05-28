@@ -1,4 +1,4 @@
-# Fault-Injection-Tool
+# SimFI : Simulation-Fault-Injection-Tool
              
 
 What is it?
