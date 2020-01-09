@@ -12,7 +12,7 @@ Usage:	faultinject.py [-h] -f {zerobyte,zeroword,nop,armnop,flip,tamper,jump} -a
 optional arguments: 
 
 - -h, --help            : Show this help message and exit
-- -a ADDRESS, --address ADDRESS : The address to implement the fault injection in the input file
+- -a ADDRESS, --address ADDRESS : The position of the byte to implement the fault injection in the input file
 - -b [0-7], --bit [0-7] : The bit of the byte to flip (required for flip fault model, otherwise ignored)
 - -f {zerobyte,zeroword,nop,flip,tamper,jump}, --faultmodel {zerobyte,zeroword,nop,flip,tamper,jump}:
    - zerobyte: sets the specified  address  byte to zero.
